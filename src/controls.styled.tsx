@@ -1,9 +1,10 @@
 import { styled } from "styled-components";
+import { ITheme } from "./particles/themeInterface";
 
-export const ControlsGrid = styled.div`
+export const ControlsGrid = styled.div<{theme: ITheme}>`
     display: grid;
     padding: 2.4rem;
-    background-color: #242D44;
+    background-color: ${({theme}) => theme.colors.bgControlsContainer};
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(5, auto);
     justify-content: center;
