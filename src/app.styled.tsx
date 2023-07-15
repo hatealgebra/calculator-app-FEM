@@ -1,10 +1,13 @@
 import { styled } from "styled-components";
 import { ITheme } from "./particles/themeInterface";
+import { devices } from "./particles/constants";
 
 export const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 2.4rem 3rem;
+  max-width: 540px;
+  margin: auto;
 
   * {
     font-weight: 700;
@@ -98,4 +101,8 @@ export const Result = styled.div<{ highlightResult: boolean, theme: ITheme }>`
       background-color: ${bgResultField};
     `
   }}
+
+  @media screen and ${devices.md}{
+    font-size: ${(props) => (props.highlightResult ? "7.2rem" : "5.6rem")};
+  }
 `;

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { BaseSyntheticEvent, SetStateAction, useContext, useEffect, useRef, useState } from "react";
 import "./App.css";
 import {
   AppContainer,
@@ -11,12 +11,10 @@ import Controls from "./Controls";
 import  { CustomThemeContext } from "./particles/ThemeProvider";
 
 function App() {
-  console
   const {theme, setTheme} = useContext(CustomThemeContext);
   const [count, setCount] = useState<string>("0");
   const [higlightResult, setHighlightResult] = useState(false);
 
-console.log(theme)
   const getResult = (stringQuery: string) => {
     try {
       const result = eval(stringQuery.replace("x", "*"));
@@ -26,7 +24,7 @@ console.log(theme)
       setCount(stringQuery);
     } finally {
       setHighlightResult(true);
-      console.log(count);
+    
     }
   };
 
@@ -41,6 +39,25 @@ console.log(theme)
     }
   }, [higlightResult, count]);
 
+  
+  const handleSwitchClick = (e: BaseSyntheticEvent): SetStateAction<string> => {
+    const switchButtonWidth = e.currentTarget.offsetWidth;
+    const relativeClickPosition = e.nativeEvent.offsetX;
+    
+    if (relativeClickPosition <= switchButtonWidth / 3) {
+      return setTheme("default")
+    }
+  
+
+    if(relativeClickPosition <= switchButtonWidth * 2/3) {
+      return setTheme("light");
+    }
+
+
+    return setTheme('neon');
+
+  }  
+
 
   return (
       <AppContainer>
@@ -53,7 +70,7 @@ console.log(theme)
               <button onClick={() => setTheme('light')}>2</button>
               <button onClick={() => setTheme('neon')}>3</button>
             </ThemeIndicator>
-            <SwitchButton>
+            <SwitchButton onClick={(e: BaseSyntheticEvent)=> handleSwitchClick(e)}>
               <button></button>
             </SwitchButton>
           </div>

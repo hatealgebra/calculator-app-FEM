@@ -1,5 +1,6 @@
 import { css, styled } from "styled-components";
 import { ITheme } from "../../particles/themeInterface";
+import { devices } from "../../particles/constants";
 
 const deleteButtonCSS = css<{ theme: ITheme }>`
   font-size: 2rem;
@@ -59,6 +60,15 @@ export const BaseButton = styled.button<{theme: ITheme}>`
     }
     `
   }}
+
+  @media screen and ${devices.md} {
+    aspect-ratio: 1.578125 !important;
+    max-height: 64px;
+    width: 100%;
+    border-radius: 10px;
+  }
+
+
 `;
 
 export const CalcButton = styled(BaseButton)<{

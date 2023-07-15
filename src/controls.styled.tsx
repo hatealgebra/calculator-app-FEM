@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import { ITheme } from "./particles/themeInterface";
+import { devices } from "./particles/constants";
 
 export const ControlsGrid = styled.div<{theme: ITheme}>`
     display: grid;
@@ -11,4 +12,8 @@ export const ControlsGrid = styled.div<{theme: ITheme}>`
     gap:13px;
     border-radius: 10px;
     width:100%;
+
+    @media screen and ${devices.md}{
+        gap: 25px;
+    }
 `
