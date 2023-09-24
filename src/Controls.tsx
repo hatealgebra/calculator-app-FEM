@@ -1,9 +1,9 @@
-import React, { Dispatch, SetStateAction, useEffect } from "react";
+import  { Dispatch, SetStateAction } from "react";
 import { ControlsGrid } from "./controls.styled";
 import Button from "./components/button/Button";
 
 interface ControlsProps {
-  setCount: Dispatch<SetStateAction<string>>;
+  setCount: Dispatch<SetStateAction<string | number | undefined>>;
   getResult: () => void;
 }
 
@@ -21,6 +21,9 @@ const Controls = ({ setCount, getResult }: ControlsProps) => {
     }
 
     setCount((prev) => {
+      if(prev === undefined) return "0";
+      console.log(prev);
+
       const prevString = prev.toString();
       switch (value) {
         case "DEL":
@@ -37,6 +40,7 @@ const Controls = ({ setCount, getResult }: ControlsProps) => {
         default:
           if (
             prevString.length === 1 &&
+            typeof prev === "string" &&
             prev[0] === "0" &&
             regex.test(`${value}`)
           ) {

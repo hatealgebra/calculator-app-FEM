@@ -8,7 +8,7 @@ interface ICustomThemeContext {
     setTheme: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const CustomThemeContext = React.createContext<ICustomThemeContext| undefined>(undefined);
+export const CustomThemeContext = React.createContext<ICustomThemeContext>({theme: '', setTheme: () => 'default' });
 
 const ThemeProviderWrapper = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState<string>("default");

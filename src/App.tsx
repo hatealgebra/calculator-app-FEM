@@ -1,4 +1,4 @@
-import { BaseSyntheticEvent, SetStateAction, useContext, useEffect, useRef, useState } from "react";
+import { BaseSyntheticEvent, SetStateAction, useContext, useEffect, useState } from "react";
 import "./App.css";
 import {
   AppContainer,
@@ -11,13 +11,13 @@ import Controls from "./Controls";
 import  { CustomThemeContext } from "./particles/ThemeProvider";
 
 function App() {
-  const {theme, setTheme} = useContext(CustomThemeContext);
-  const [count, setCount] = useState<string>("0");
+  const {setTheme} = useContext(CustomThemeContext);
+  const [count, setCount] = useState<string | number | undefined>("0");
   const [higlightResult, setHighlightResult] = useState(false);
 
   const getResult = (stringQuery: string) => {
     try {
-      const result = eval(stringQuery.replace("x", "*"));
+      const result = eval(stringQuery.replace("x", "*")) as string;
       const resultString = result.toString();
       setCount(resultString);
     } catch (e) {
@@ -41,8 +41,11 @@ function App() {
 
   
   const handleSwitchClick = (e: BaseSyntheticEvent): SetStateAction<string> => {
-    const switchButtonWidth = e.currentTarget.offsetWidth;
-    const relativeClickPosition = e.nativeEvent.offsetX;
+    const currTarget = e.currentTarget as HTMLElement;
+    const nativeEvent = e.nativeEvent as MouseEvent;
+    
+    const switchButtonWidth = currTarget.offsetWidth ;
+    const relativeClickPosition = nativeEvent.offsetX;
     
     if (relativeClickPosition <= switchButtonWidth / 3) {
       return setTheme("default")
