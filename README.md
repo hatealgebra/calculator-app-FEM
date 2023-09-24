@@ -32,10 +32,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
-
-## My process
+- Solution URL: [https://github.com/hatealgebra/calculator-app-FEM](https://github.com/hatealgebra/calculator-app-FEM)
+- Live Site URL: [https://calculator-app-fem-pv.netlify.app/](https://calculator-app-fem-pv.netlify.app/)
 
 ### Built with
 
