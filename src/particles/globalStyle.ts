@@ -3,7 +3,6 @@ import { ITheme } from "./themeInterface";
 
 
 const GlobalStyle = createGlobalStyle<{theme: ITheme}>`
-@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap');
 
 * {
   box-sizing: border-box !important;
@@ -12,8 +11,8 @@ const GlobalStyle = createGlobalStyle<{theme: ITheme}>`
 }
 
 html {
-  font-size: 62.5%;
   font-family: 'League Spartan', sans-serif;
+  font-size: 62.5%;
   font-weight: 700;
 }
 
@@ -25,6 +24,7 @@ html, body{
 }
 
 button {
+  font-family: 'League Spartan', sans-serif;
   cursor: pointer;
 }
 `
