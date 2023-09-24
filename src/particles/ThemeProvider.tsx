@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import defaultTheme, { lightTheme, neonTheme } from "./theme";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./globalStyle";
@@ -11,7 +11,7 @@ interface ICustomThemeContext {
 export const CustomThemeContext = React.createContext<ICustomThemeContext>({theme: '', setTheme: () => 'default' });
 
 const ThemeProviderWrapper = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useState<string>("default");
+  const [theme, setTheme] = useState<string>(localStorage.getItem('theme') || "default");
 
     const contextValue: ICustomThemeContext = {
         theme:theme,
@@ -27,6 +27,13 @@ const ThemeProviderWrapper = ({ children }: { children: ReactNode }) => {
       : defaultTheme;
 
 
+    useEffect(() => {
+        localStorage.setItem('theme', theme);
+    }, [theme])
+    
+  
+
+console.log(theme);
   return (
     <CustomThemeContext.Provider value={contextValue}>
       <ThemeProvider theme={assignTheme}>
