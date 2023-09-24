@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import { ITheme } from "./themeInterface";
 
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle<{theme: ITheme}>`
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap');
 
 * {
@@ -21,7 +21,7 @@ html, body{
   height: 100%;
   width: 100%;
   overflow: hidden;
-  background-color: ${({ theme }: {theme: ITheme}) => theme.colors.bg};
+  background-color: ${({ theme }) => theme.colors.bg};
 }
 
 button {
