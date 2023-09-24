@@ -7,7 +7,14 @@ export const AppContainer = styled.div`
   flex-direction: column;
   padding: 2.4rem 3rem;
   max-width: 540px;
-  margin: auto;
+  width: 100%;
+  margin: 10% auto auto;
+  height: fit-content;
+  position: absolute ;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0 ;
 
   * {
     font-weight: 700;
